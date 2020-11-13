@@ -1,0 +1,316 @@
+body {
+    /* 브라우저마다 기본 설정으로 BODY 요소에 margin과 padding의 값이 설정되어 있습니다. */
+    /* 각각의 브라우저마다 BODY 요소가 다른 값을 가지고 있을 수 있으므로 우리가 일정하게 초기화해서 사용합니다. */
+    /* 0은 단위를 사용하지 않습니다. */
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    /* 화면에는 다음의 값으로 랜더링 되어 있는데 여러 이유로(설명이 많이 필요합니다) 생략 가능합니다. */
+    /* width: 100%; */
+    /* height: 75px; */
+    background-color: white;
+    border-bottom: 1px solid lightgray; /* 요소테두리선-아래: 1px두께 가는실선 밝은회색; - header 하단에 회색의 선이 표시됩니다. */
+  }
+  .container {
+    /* height: 75px; */
+    width: 980px;
+    margin: auto; /* 요소바깥여백: 여백자동; - 이 속성과 값은 container를 수평 가운데 정렬하는 속성으로 쓰입니다. */
+  }
+  .container-left {
+    /* width: 370px; */
+    /* height: 75px; */
+    /* float: left; */
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+  .logo {
+    margin-right: 5px;
+    float: left; /* 수평정렬: 왼쪽부터차례대로; - logo와 menu를 수평 정렬하기 위해 사용되었습니다. 이 속성의 정확한 의미는 수평 정렬이 아니지만 쉽게 이해하도록 의역했습니다. */
+  }
+  .logo img { /* logo의 자식(후손) 요소인 img 태그 - 선택자에서 띄어쓰기는 자식(후손)요소를 의미합니다. */
+    display: block; /* 요소특성: 형태위주; - img(이미지) 하단에 생기는 불필요한 여백을 없애기 위해서 사용되었습니다. */
+  }
+  .menu {
+    float: left; /* logo와 menu를 수평 정렬하기 위해 사용되었습니다. */
+  }
+  .menu-item {
+    font-size: 16px;
+    padding: 8px 10px; /* padding-top: 8px; padding-bottom: 8px; padding-left: 10px; padding-right: 10px; 과 같습니다. */
+    float: left; /* 각 menu-item들을 수평 정렬하기 위해 사용되었습니다. */
+    line-height: 1; /* 줄 높이, 행간과 비슷한 개념으로 이해할 수 있습니다. 기본 값은 normal이며 이는 약 1.2배 정도입니다. 그대로 유지하면 .menu-item의 높이가 약 35px이 되기 때문에 1배로 수정하여 32px로 .logo의 크기와 동일하게 작업합니다. */
+  }
+
+  /* float: left; 를 사용하고 마무리할 때 필요한 코드입니다. */
+  /* float: left;를 사용한 해당 HTML 요소의 부모 요소에게 class="clearfix"를 입력하여 CSS float 속성에서 발생하는 현상을 해제합니다. */
+  .clearfix::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+
+/* COMMON */
+.body__container {
+  font-size: 16px;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  color: #333;
+}
+a {
+  text-decoration: none;
+}
+
+/* INNER LEFT / RIGHT */
+.float--left {
+  float: left;
+}
+.float--right {
+  float: right;
+}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+/* BTN */
+.btn {
+  display: flex;
+  align-items: center;
+  height: 34px;
+  padding: 0 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #333;
+  line-height: 1.5;
+  text-align: center;
+  /* linear-gradient(DIRECTION, COLOR1, COLOR2, ...); */
+  background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+  cursor: pointer;
+  box-sizing: border-box;
+  position: relative;
+}
+.btn:hover::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, .07);
+}
+
+  /* 가입하기 버튼 스타일*/
+.btn.btn--primary {
+  border: 1px solid #65b836;
+  color: #fff;
+  background: #55a532 linear-gradient(#91dd70, #55ae2e);
+}
+  
+/* INPUT */
+.input--text {
+  height: 34px;
+  padding: 0 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  outline: none;
+  box-sizing: border-box;
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075); /* .75 아니고 .075 주의 */
+}
+.input--text:focus {
+  border-color: #51a7e8 !important; /* header #search 선택자를 덮어쓰기 위해서 사용 */
+  box-shadow: inset 0 1px 2px rgba(0, 0, 0, .075), 0 0 5px rgba(81, 167, 232, .5);
+}
+/* Vendor prefix(브라우저 업체별 접두어) */
+.input--text::-webkit-input-placeholder { color: #cacaca; }
+.input--text:-ms-input-placeholder      { color: #cacaca; }
+.input--text::-moz-placeholder          { color: #cacaca; }
+  
+/* SUMMARY */
+.summary__title {
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 18px;
+}
+.summary__description {
+  font-size: 26px;
+  font-weight: 300;
+  color: #767676;
+  line-height: 1.5;
+} 
+  
+/* SECTION */
+.section {
+  position: relative;
+}
+.section .inner {
+  max-width: 980px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: border-box;
+}
+
+/* HEADER */
+header {
+  border-bottom: 1px solid rgba(0, 0, 0, .75);
+  /* box-shadow: X Y BLUR SPREAD COLOR; */
+  box-shadow: 0 0 5px rgba(0, 0, 0, .75);
+  background: #fff;
+}
+header .inner {
+  height: 78px;
+}
+/* Menu group(Left) */
+header .menu-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+header .logo {
+  margin-right: 10px;
+}
+header .logo a {
+  background: url("https://heropcode.github.io/GitHub-Responsive/img/logo.svg");
+  width: 32px;
+  height: 32px;
+  display: block;
+  text-indent: -9999px; /* 대체 텍스트 */
+}
+header .logo a:hover {
+  background: url("https://heropcode.github.io/GitHub-Responsive/img/logo_on.svg");
+}
+header .main-menu {
+  display: flex;
+}
+header .main-menu li a {
+  padding: 10px;
+  display: block;
+  color: #3c4146;
+}
+
+header .main-menu li a:hover {
+  color: #4078c0;
+}
+/* Sign group(Right) */
+header .sign-group {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+header .btn-group {
+  order: 2;
+  display: flex;
+}
+header .btn-group .sign-in {
+  margin-right: 4px;
+}
+#search-form {
+  order: 1;
+  margin-right: 12px;
+}
+#search {
+  width: 160px;
+  font-size: 14px;
+}
+#search + [type="submit"] {
+  display: none;
+}
+header .sub-menu {
+  margin-right: 10px;
+  display: flex;
+}
+header .sub-menu li a {
+  padding: 8px;
+  color: #3c4146;
+  font-size: 13px;
+  display: block;
+}
+header .sub-menu li a:hover {
+  color: #4078c0;
+}
+#toggle-btn {
+  display: none;
+  background: url("../img/toggle-btn.svg");
+  width: 18px;
+  height: 24px;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  cursor: pointer;
+  text-indent: -9999px;
+}
+
+/* VISUAL */
+.section--visual {
+  position: relative;
+  background-image: url("https://heropcode.github.io/GitHub-Responsive/img/bg.jpg");
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: cover;
+}
+.section--visual::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .3);
+}
+.section--visual .inner {
+  padding: 160px 0;
+  display: flex;
+}
+.section--visual .summary {
+  flex: 1;
+  margin-right: 90px;
+}
+  .section--visual .summary__title {
+    text-align: center;
+    font-size: 54px;
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+  0 1px 25px rgba(0, 0, 0, .75);
+  }
+
+  .section--visual .summary__description {
+   /* text-align: center;
+    font-size: 14px;*/
+    color: #fff;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, .25),
+    0 1px 25px rgba(0, 0, 0, .75);
+  }
+
+  #sign-form {
+    width: 340px;
+    margin-top: 16px;
+  }
+  #sign-form li {
+    margin-bottom: 17px;
+  }
+  #sign-form li:last-child {
+    margin-bottom: 0;
+  }
+  #sign-form .input--text {
+    width: 100%;
+    height: 40px;
+  }
+  #sign-form .caption {
+    font-size: 12px;
+    margin-top: 5px;
+    color: rgba(255, 255, 255, .6);
+    line-height: 1.5;
+    text-align: center;
+  }
+  #sign-form [type="submit"] {
+    width: 100%;
+    height: 62px;
+    padding: 0 25px;
+    font-size: 20px;
+    justify-content: center;
+  }
+
